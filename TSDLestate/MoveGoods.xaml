@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSDLestate.MoveGoods"
+             Title="MoveGoods">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Text Message -->
+        <Label x:Name="textMessege"
+               Text="Начните сканирование"
+               SemanticProperties.HeadingLevel="Level1"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Grid.Row="0"
+               Grid.ColumnSpan="2" />
+
+        <!-- venderCode -->
+        <Label x:Name="venderCode"
+               Text=" "
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               HorizontalTextAlignment="Center" />
+
+        <!-- count -->
+        <Label x:Name="count"
+               Text="Count"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="1"
+               Grid.Column="0" />
+
+        <!-- quantity -->
+        <Label x:Name="quantity"
+               Text="Quantity"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="1"
+               Grid.Column="1" />
+        <!-- Button -->
+        <Button Text="Создать приходник"
+                Clicked="Button_Clicked"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center" />
+
+        <!-- listViewMoveGoods -->
+        <ListView x:Name="listViewMoveGoods"
+                  Grid.Row="2"
+                  Grid.ColumnSpan="2"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand">
+            <ListView.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Артикул" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="Факт" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="План" Grid.Column="2" FontAttributes="Bold" HorizontalOptions="Center" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding VendorCode}" Grid.Column="0" VerticalOptions="Center" />
+                            <Label Text="{Binding Count}" Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="{Binding Quantity}" Grid.Column="2" VerticalOptions="Center" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
