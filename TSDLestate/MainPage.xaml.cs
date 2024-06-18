@@ -2,34 +2,40 @@
 {
 	public partial class MainPage : ContentPage
 	{
+		private readonly IHttpService _httpService;
 
-		public MainPage()
+		public MainPage(IHttpService httpService)
 		{
+			_httpService = httpService;
 			InitializeComponent();
-
 			GetResult();
 		}
 
 		private async Task GetResult()
 		{
-			List<Movementos> movements = await HttpClientTSD.GetMovementos(this);
-			listViewMovemented.ItemsSource = movements;
+			try
+			{
+				List<Movementos> movements = await _httpService.GetMovementosAsync();
+				listViewMovemented.ItemsSource = movements;
+			}
+			catch (Exception ex)
+			{
+				Error(ex.Message);
+			}
 		}
 
 		private void ClicMovemented(object sender, SelectedItemChangedEventArgs e)
 		{
 			if (e.SelectedItem != null)
 			{
-				// Здесь можно обработать выбор элемента
 				var selectedMovement = (Movementos)e.SelectedItem;
-				HttpClientTSD.postGUID = selectedMovement.GUID;
-				Navigation.PushAsync(new MoveGoods());
+				Navigation.PushAsync(new MoveGoods(_httpService, selectedMovement.GUID));
 			}
 		}
 
-		public void Error(string error) 
+		public void Error(string error)
 		{
-		    textMessege.Text = error;
+			textMessege.Text = error;
 		}
 	}
 }

@@ -17,11 +17,11 @@ namespace TSDLestate
 
 		private async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
-			HttpClientTSD.username = usernameEntry.Text;
-			HttpClientTSD.password = passwordEntry.Text;
+			string username = usernameEntry.Text;
+			string password = passwordEntry.Text;
 
-			
-			Navigation.PushAsync(new MainPage());
+			IHttpService httpService = new HttpClientTSD(username, password);
+			await Navigation.PushAsync(new MainPage(httpService));
 		}
 	}
 }

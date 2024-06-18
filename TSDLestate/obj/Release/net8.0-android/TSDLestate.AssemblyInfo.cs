@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TSDLestate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+a5724cc83530d01adaeed65d489bd7c60edda034")]
 [assembly: System.Reflection.AssemblyProductAttribute("TSDLestate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TSDLestate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
